@@ -28,7 +28,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
       	  home-manager.backupFileExtension = "backup";
-          home-manager.users.Fruzz = {
+          home-manager.users.fruzzx = {
             imports = [ ./user/home.nix ];
           };
         }

@@ -5,8 +5,8 @@
     ./apps.nix
   ];
   
-  home.username = "Fruzz";
-  home.homeDirectory = "/home/Fruzz";
+  home.username = "fruzzx";
+  home.homeDirectory = "/home/fruzzx";
   home.stateVersion = "26.05"; 
   
   home.packages = with pkgs; [

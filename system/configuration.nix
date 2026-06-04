@@ -13,7 +13,7 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager = {
     plasma-login-manager.enable = true;
-    autoLogin.user = "Fruzz";    
+    autoLogin.user = "fruzzx";    
   };
 
   hardware.graphics = {
@@ -75,7 +75,7 @@
     enable = true;
     extraRules = [
       {
-        users = [ "Fruzz" ];
+        users = [ "fruzzx" ];
         commands = [
           {
             command = "/run/current-system/sw/bin/nixos-rebuild";
@@ -90,7 +90,7 @@
     ];
   };
 
-  users.users.Fruzz = {
+  users.users.fruzzx = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];     packages = with pkgs; [
       tree
