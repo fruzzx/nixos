@@ -99,8 +99,7 @@
 
 
   services.flatpak.enable = true;
-  
-  programs.firefox.enable = true;
+
   programs.droidcam.enable = true;
 
   environment.systemPackages = with pkgs; [

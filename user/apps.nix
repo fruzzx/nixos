@@ -15,7 +15,13 @@
     enable = true;
     defaultEditor = true;
     settings = {
-      theme = "ashen";
+     # theme = "ashen";
+    };
+    themes = {
+      ashen_transparent = {
+        "inherits" = "ashen";
+        "ui.background" = {};
+      };
     };
   };
 
@@ -27,7 +33,7 @@
     '';
     settings = {
       confirm_os_window_close = 0;
-      background_opacity = "0.9";
+     # background_opacity = "0.9";
     };
   };
 
@@ -40,6 +46,23 @@
     enableFishIntegration = true;
     settings = {
       add_newline = false;
+    };
+  };
+
+  programs.firefox = {
+    enable = true;
+    profiles.default = {
+      isDefault = true;
+      settings = {
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      };
+      userContent = ''
+        @-moz-document url("about:newtab"), url("about:home") {
+          body {
+            background-color: #121212 !important; 
+          }
+        }
+      '';
     };
   };
 }

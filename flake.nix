@@ -13,9 +13,14 @@
       url = "github:mikaeladev/nix-nvibrant/ef41a074ef3f4229bd9d0521e73e4b404d1e1884";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nvibrant, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nvibrant, home-manager, stylix,  ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";       
       modules = [
@@ -25,11 +30,14 @@
         })
           home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-      	  home-manager.backupFileExtension = "backup";
-          home-manager.users.fruzzx = {
-            imports = [ ./user/home.nix ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            extraSpecialArgs = { inherit inputs; };
+            users.fruzzx = {
+              imports = [ ./user/home.nix ];
+            };
           };
         }
       ];
