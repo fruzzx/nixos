@@ -51,6 +51,7 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.supportedFilesystems = [ "ntfs" ];
  
  # boot.kernelParams = [ "nowatchdog" ];
  # systemd.extraConfig = "DefaultTimeoutStopSec=10s";
