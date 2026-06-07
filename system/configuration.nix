@@ -102,6 +102,19 @@
   services.flatpak.enable = true;
 
   programs.droidcam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    package = pkgs.steam.override {
+      extraPkgs = pkgs': with pkgs'; [
+        kdePackages.breeze
+      ];
+    };
+  };
+
+  programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim 

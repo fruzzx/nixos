@@ -25,6 +25,10 @@
     qbittorrent
     fastfetch
     upscaler
+    quickemu
+    quickgui
+    mangohud
+    goverlay
   ];
   programs.home-manager.enable = true;
 }
