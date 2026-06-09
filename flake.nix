@@ -1,46 +1,19 @@
 {
-  description = "A very basic flake";
-
+  description = "nix nix swirl nix";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+   # nvibrant-old.url = "github:NixOS/nixpkgs/bd0ff2d3eac24699c3664d5966b9ef36f388e2ca";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    nvibrant = {
-      url = "github:mikaeladev/nix-nvibrant/ef41a074ef3f4229bd9d0521e73e4b404d1e1884";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = { self, nixpkgs, nvibrant, home-manager, stylix,  ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";       
-      modules = [
-        ./system/configuration.nix 
-        ({ ... }: {
-          nixpkgs.overlays = [ nvibrant.overlays.default ];
-        })
-          home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            extraSpecialArgs = { inherit inputs; };
-            users.fruzzx = {
-              imports = [ ./user/home.nix ];
-            };
-          };
-        }
-      ];
-    };
-  };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake
+  {inherit inputs;} (inputs.import-tree ./modules);
 }
