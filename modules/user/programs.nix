@@ -4,8 +4,8 @@
       enable = true;
       shellAliases = {
         nrs = "sudo nixos-rebuild switch --flake .#main";
-        clean = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
-        update = "nix flake update";
+        ncg = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+        nfu = "nix flake update";
       };
       interactiveShellInit = ''
         set fish_greeting

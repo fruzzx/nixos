@@ -16,6 +16,7 @@
   };
   # Main system configuration
   flake.nixosModules.main = { pkgs, ... }: {
+    services.flatpak.enable = true;
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     boot.loader.systemd-boot.enable = true;
