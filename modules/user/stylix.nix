@@ -6,6 +6,7 @@
       targets.firefox.profileNames = [ "default" ];
       targets.kde.useWallpaper.enable = false;
       targets.qt.enable = false;
+      targets.mangohud.enable = false;
       fonts = {
         sizes = {
           applications = 12;

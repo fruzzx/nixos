@@ -19,6 +19,7 @@
         nvibrant
         programs
         stylix
+        mangohud
       ];
     };
   };
@@ -41,6 +42,7 @@
       qbittorrent
       fastfetch
       upscaler
+      heroic
     ];
   };
 }
